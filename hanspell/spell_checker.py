@@ -49,7 +49,7 @@ def check(text):
     # 페이로드를 브라우저에서 직접 확인한 값으로 변경함.
     # passportKey와 _를 직접 수정해서 사용하세요.
     payload = {
-        'passportKey': passport_key,
+        'passportKey': 'd6037b2fb087056ebeae83329c10501dacc9e582',
         'where': 'nexearch',
         'color_blindness': '0',
         '_': '1733194059596',
