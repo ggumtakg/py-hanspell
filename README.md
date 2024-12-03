@@ -36,6 +36,7 @@ $ python setup.py install
 
 ```python
 >>> from hanspell import spell_checker
+>>> spell_checker.setParam('yourPassportKey', 'your_value')
 >>> result = spell_checker.check(u'안녕 하세요. 저는 한국인 입니다. 이문장은 한글로 작성됬습니다.')
 >>> result.as_dict()  # dict로 출력
 {'checked': '안녕하세요. 저는 한국인입니다. 이 문장은 한글로 작성됐습니다.',
