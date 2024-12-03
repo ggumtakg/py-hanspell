@@ -40,12 +40,16 @@ def check(text):
             result.append(checked)
         return result
 
-    # 최대 500자까지 가능.
-    if len(text) > 500:
+    # 최대 300자까지 가능.
+    if len(text) > 300:
         return Checked(result=False)
 
+    # 페이로드를 브라우저에서 직접 확인한 값으로 변경함.
     payload = {
+        'passportKey': 'd6037b2fb087056ebeae83329c10501dacc9e582',
+        'where': 'nexearch',
         'color_blindness': '0',
+        '_': '1733194059596',
         'q': text
     }
 
@@ -59,7 +63,8 @@ def check(text):
     passed_time = time.time() - start_time
 
     data = json.loads(r.text)
-    html = data['message']['result']['html']
+    # html을 notag_html로 변경
+    html = data['message']['result']['notag_html']
     result = {
         'result': True,
         'original': text,
