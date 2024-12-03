@@ -18,6 +18,13 @@ from .constants import CheckResult
 _agent = requests.Session()
 PY3 = sys.version_info[0] == 3
 
+passportKey = 'None'
+_value = 'None'
+
+def setParam(paramPassportKey, paramUnderBarValue):
+    passportKey = paramPassportKey
+    _value = paramUnderBarValue
+    return 1
 
 def _remove_tags(text):
     text = u'<content>{}</content>'.format(text).replace('<br>','')
@@ -46,10 +53,10 @@ def check(text):
     # 페이로드를 브라우저에서 직접 확인한 값으로 변경함.
     # passportKey와 _를 직접 수정해서 사용하세요.
     payload = {
-        'passportKey': 'd6037b2fb087056ebeae83329c10501dacc9e582',
+        'passportKey': passportKey,
         'where': 'nexearch',
         'color_blindness': '0',
-        '_': '1733197393174',
+        '_': _value,
         'q': text
     }
 
