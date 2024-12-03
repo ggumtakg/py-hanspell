@@ -14,7 +14,6 @@ from . import __version__
 from .response import Checked
 from .constants import base_url
 from .constants import CheckResult
-from selenium import webdriver
 
 _agent = requests.Session()
 PY3 = sys.version_info[0] == 3
@@ -28,22 +27,6 @@ def _remove_tags(text):
     result = ''.join(ET.fromstring(text).itertext())
 
     return result
-
-def get_passport_key():
-    url = "https://search.naver.com/search.naver?where=nexearch&sm=tab_jum&query=맞춤법+검사기"
-
-    # 브라우저 드라이버 설정 (크롬 사용)
-    driver = webdriver.Chrome()
-    driver.get(url)
-
-    # 네트워크 요청 추적 및 passportKey 추출
-    for request in driver.requests:
-        if 'passportKey' in request.url:
-            driver.quit()
-            return request.url.split('passportKey=')[1].split('&')[0]
-
-    driver.quit()
-    return None
 
 def check(text):
     """
@@ -65,10 +48,10 @@ def check(text):
 
     # 페이로드를 브라우저에서 직접 확인한 값으로 변경함.
     payload = {
-        'passportKey': passport_key,
+        #'passportKey': passport_key,
         'where': 'nexearch',
         'color_blindness': '0',
-        '_': '1733194059596',
+        #'_': '1733194059596',
         'q': text
     }
 
