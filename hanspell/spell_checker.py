@@ -22,6 +22,8 @@ passportKey = 'None'
 _value = 'None'
 
 def setParam(paramPassportKey, paramUnderBarValue):
+    global passportKey
+    global _value
     passportKey = paramPassportKey
     _value = paramUnderBarValue
     return 1
